@@ -5,8 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MemeMaker2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MemeMaker" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="Texto">
+            <Setter Property="FontFamily" Value="Impact"></Setter>
+            <Setter Property="FontSize" Value="40"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect></DropShadowEffect>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+
+    <ScrollViewer>
+        <StackPanel>
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" Margin="5" Text="Texto superior"></TextBlock>
+                <TextBox Grid.Column="1" Grid.Row="0"  Margin="5" x:Name="TextBoxSup" Text="Texto superior"></TextBox>
+                <TextBlock Grid.Column="0" Grid.Row="1"  Margin="5" Text="Texto inferior"></TextBlock>
+                <TextBox Grid.Column="1" Grid.Row="1" Margin="5" x:Name="TextBoxInf" Text="Texto inferior"></TextBox>
+                <TextBlock Grid.Column="0" Grid.Row="2" Margin="5" Text="Alto"></TextBlock>
+                <Slider Grid.Column="1" Grid.Row="2" Margin="5" x:Name="SliderAlto" Minimum="100" Maximum="1000" Value="500"></Slider>
+                <TextBlock Grid.Column="0" Grid.Row="3" Margin="5" Text="Ancho"></TextBlock>
+                <Slider Grid.Column="1" Grid.Row="3" Margin="5" x:Name="SliderAncho" Minimum="100" Maximum="1000" Value="500"></Slider>
+                <TextBlock Grid.Column="0" Grid.Row="4" Margin="5" Text="Imagen"></TextBlock>
+                <TextBox Grid.Column="1" Grid.Row="4" Margin="5" x:Name="TextBoxImg"></TextBox>
+                <TextBlock Grid.Column="0" Grid.Row="5" Margin="5" Text="Borde"></TextBlock>
+                <CheckBox Grid.Column="1" Grid.Row="5" Margin="5" x:Name="checkBox" IsChecked="True"></CheckBox>
+            </Grid>
+            <Border Margin="5" Background="AntiqueWhite" BorderBrush="Black" Height="{Binding ElementName=SliderAlto, Path=Value}" Width="{Binding ElementName=SliderAncho, Path=Value}">
+                <Grid>
+                    <Image Source="{Binding ElementName=TextBoxImg,Path=Text}" Stretch="Fill" />
+                    <TextBlock Style="{StaticResource Texto}" Text="{Binding ElementName=TextBoxSup, Path=Text}" VerticalAlignment="Top"/>
+                    <TextBlock Style="{StaticResource Texto}" Text="{Binding ElementName=TextBoxInf, Path=Text}" VerticalAlignment="Bottom"/>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
 </Window>
