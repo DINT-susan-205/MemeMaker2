@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MemeMaker2"
         mc:Ignorable="d"
         Title="MemeMaker" Height="450" Width="800">
-    
+
 
     <Window.Resources>
         <Style TargetType="TextBlock" x:Key="Texto">
